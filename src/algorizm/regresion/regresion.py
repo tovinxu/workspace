@@ -9,7 +9,7 @@ import scipy as sp
 import numpy as np
 import matplotlib.pyplot as pt
 from cProfile import label
-from scipy.optimize.minpack import leastsq
+from scipy.optimize.minpack import leastsq, fsolve
 from numpy.lib.polynomial import polyfit
 
 def redise(p0,x,y):
@@ -34,6 +34,9 @@ y_predit2 = sp.poly1d(rs2[0]);
 y_predit5 = sp.poly1d(rs5[0]);
 
 
+print y_predit2
+result = fsolve(y_predit2-10000,0);
+print result
 pt.plot(x_clean,y_clean,'.');
 pt.plot(x_clean,y_predit1,'-',label="predit1")
 pt.plot(x_clean,y_predit2(x_clean),'-',label = "predit2")
